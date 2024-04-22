@@ -30,10 +30,14 @@ namespace UserManagmentApp.Views.Areas
             // Obtener el área seleccionada
             Area selectedArea = (Area)areaComboBox.SelectedItem;
 
-            // Realizar la asignación de usuario a área (puedes implementar la lógica de acuerdo a tus necesidades)
+            // Realizar la asignación de usuario a área
             if (selectedUser != null && selectedArea != null)
             {
                 selectedUser.AreaId = selectedArea.Id;
+
+                UsuarioController controller = new UsuarioController();
+
+                controller.ActualizarUsuario(selectedUser);
 
                 // Actualizar la interfaz de usuario para mostrar un mensaje de confirmación
                 confirmationTextBlock.Text = "Asignación exitosa: " + selectedUser.Nombre + " asignado a " + selectedArea.Nombre;
@@ -44,14 +48,14 @@ namespace UserManagmentApp.Views.Areas
             }
         }
 
-        // Método para obtener una lista de usuarios (puedes implementarlo según tus necesidades)
+        // Método para obtener una lista de usuarios
         private List<Usuario> ObtenerUsuarios()
         {
             UsuarioController usuarioController = new UsuarioController();
             return usuarioController.ObtenerTodosUsuarios();
         }
 
-        // Método para obtener una lista de áreas (puedes implementarlo según tus necesidades)
+        // Método para obtener una lista de áreas
         private List<Area> ObtenerAreas()
         {
             AreaController areaController = new AreaController();  

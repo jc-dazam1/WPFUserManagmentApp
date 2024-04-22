@@ -52,6 +52,8 @@ namespace UserManagmentApp.Views.Usuarios
             // Notificar que se ha guardado un usuario
             UsuarioGuardado?.Invoke(this, EventArgs.Empty);
 
+            confirmationTextBlock.Text = "Creacion usuario exitoso: " + nuevoUsuario.Nombre + " " + nuevoUsuario.Apellido;
+
         }
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)

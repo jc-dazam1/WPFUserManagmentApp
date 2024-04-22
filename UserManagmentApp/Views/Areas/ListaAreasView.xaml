@@ -15,13 +15,13 @@
         <TextBlock Text="Lista de Áreas de la Empresa" FontSize="18" Margin="20"/>
 
         <!-- Lista de áreas -->
-        <ListBox x:Name="ListBoxAreas" Grid.Row="1" Margin="20,50,20,20" ItemsSource="{Binding Areas}" DisplayMemberPath="Nombre" SelectionChanged="ListaAreas_SelectionChanged"/>
+        <ListBox x:Name="ListBoxAreas" Grid.Row="1" Margin="20,50,30,30" ItemsSource="{Binding Areas}" DisplayMemberPath="Nombre" SelectionChanged="ListaAreas_SelectionChanged"/>
 
         <!-- Detalles de área seleccionada -->
-        <Border Margin="-20,80,10,10" Visibility="{Binding AreaSeleccionada, Converter={StaticResource NullToVisibilityConverter}}">
-            <StackPanel Margin="50,40,30,20">
+        <Border Margin="-20,90,10,10" Visibility="{Binding AreaSeleccionada, Converter={StaticResource NullToVisibilityConverter}}">
+            <StackPanel Margin="50,50,50,20">
                 <TextBlock Text="{Binding AreaSeleccionada.Nombre}" FontSize="16" FontWeight="Bold"/>
-                <TextBlock Text="Usuarios Asignados" FontWeight="Bold" Margin="10,20,30,5"/>
+                <TextBlock Text="Usuarios Asignados" FontWeight="Bold" Margin="10,10,30,5"/>
                 <ListBox ItemsSource="{Binding UsuariosAsignados}" DisplayMemberPath="Nombre" Height="100" Margin="10,10,10,10"/>
             </StackPanel>
         </Border>
