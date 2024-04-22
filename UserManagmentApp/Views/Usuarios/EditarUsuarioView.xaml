@@ -7,6 +7,33 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Nombre -->
+        <TextBlock Grid.Row="0" Text="Nombre:"/>
+        <TextBox Grid.Row="1" x:Name="txtNombre"/>
+
+        <!-- Apellido -->
+        <TextBlock Grid.Row="2" Text="Apellido:"/>
+        <TextBox Grid.Row="3" x:Name="txtApellido"/>
+
+        <TextBlock Grid.Row="2" Text="Documento:"/>
+        <TextBox Grid.Row="3" x:Name="txtDocumento"/>
+
+        <!-- Correo electrónico -->
+        <TextBlock Grid.Row="4" Text="Correo electrónico:"/>
+        <TextBox Grid.Row="5" x:Name="txtCorreo"/>
+
+        <!-- Botones -->
+        <StackPanel Grid.Row="6" Orientation="Horizontal">
+            <Button Content="Guardar" Width="100" Margin="5" Click="Guardar_Click"/>
+            <Button Content="Cancelar" Width="100" Margin="5" Click="Cancelar_Click"/>
+        </StackPanel>
     </Grid>
 </UserControl>
