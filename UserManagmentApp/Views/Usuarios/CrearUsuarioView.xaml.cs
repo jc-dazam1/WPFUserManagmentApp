@@ -46,7 +46,7 @@ namespace UserManagmentApp.Views.Usuarios
             string correo = txtCorreo.Text;
 
             // Crea un nuevo objeto Usuario con los datos capturados
-            Usuario nuevoUsuario = new Usuario(nombre, apellido, documento, correo);
+            Usuario nuevoUsuario = new Usuario(nombre, apellido, documento, correo, -1);
             UsuarioController.GuardarUsuario(nuevoUsuario);
 
             // Notificar que se ha guardado un usuario

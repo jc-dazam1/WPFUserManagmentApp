@@ -12,6 +12,7 @@
             </MenuItem>
             <MenuItem Header="Areas">
                 <MenuItem Header="Lista de Areas" Click="MostrarListaAreas"/>
+                <MenuItem Header="Asignar Area a Usuario" Click="MostrarAsignarAreaUsuario"/>
             </MenuItem>
         </Menu>
         <ContentControl Name="ContenidoPrincipal"/>

@@ -12,7 +12,7 @@ using UserManagmentApp.Models;
 namespace UserManagmentApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240422191940_inicial")]
+    [Migration("20240422203229_inicial")]
     partial class inicial
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace UserManagmentApp.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("UserManagmentApp.Models.Area", b =>
+            modelBuilder.Entity("Area", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,6 +42,11 @@ namespace UserManagmentApp.Migrations
                     b.ToTable("Area", (string)null);
 
                     b.HasData(
+                        new
+                        {
+                            Id = -1L,
+                            Nombre = "No Asignado"
+                        },
                         new
                         {
                             Id = 1L,
@@ -71,6 +76,9 @@ namespace UserManagmentApp.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<long>("AreaId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("CorreoElectronico")
                         .IsRequired()
                         .HasColumnType("text");
@@ -91,7 +99,25 @@ namespace UserManagmentApp.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AreaId");
+
                     b.ToTable("Usuario");
+                });
+
+            modelBuilder.Entity("UserManagmentApp.Models.Usuario", b =>
+                {
+                    b.HasOne("Area", "Area")
+                        .WithMany("Usuarios")
+                        .HasForeignKey("AreaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Area");
+                });
+
+            modelBuilder.Entity("Area", b =>
+                {
+                    b.Navigation("Usuarios");
                 });
 #pragma warning restore 612, 618
         }
