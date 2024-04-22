@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
 using UserManagmentApp.Models;
 using UserManagmentApp.Views.Usuarios;
 
@@ -34,7 +21,10 @@ namespace UserManagmentApp.Views.Areas
             var viewModel = (ListaAreasViewModel)DataContext;
 
             // Obtiene el área seleccionada en el ListBox
-            //viewModel.SeleccionarArea((Area)ListaAreas.SelectedItem);
+            var areaSeleccionada = (Area)ListBoxAreas.SelectedItem;
+
+            // Llama al método en el ViewModel para manejar la selección del área
+            viewModel.SeleccionarArea(areaSeleccionada);
         }
     }
 }
