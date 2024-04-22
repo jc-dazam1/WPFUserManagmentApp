@@ -2,8 +2,17 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:UserManagmentApp"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
+    <!-- Recursos globales, estilos y plantillas -->
+    <ResourceDictionary>
+        <!-- Definición de estilos -->
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="SteelBlue"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <!-- Agrega más estilos y recursos globales según tus necesidades -->
+    </ResourceDictionary>
     </Application.Resources>
 </Application>
