@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UserManagmentApp.Models;
 
 namespace UserManagmentApp.Views.Usuarios
 {
@@ -20,9 +21,42 @@ namespace UserManagmentApp.Views.Usuarios
     /// </summary>
     public partial class EditarUsuarioView : UserControl
     {
-        public EditarUsuarioView()
+        private Usuario usuario;
+        public EditarUsuarioView(Usuario usuarioSeleccionado)
         {
             InitializeComponent();
+
+            // Guarda el usuario seleccionado para editar
+            usuario = usuarioSeleccionado;
+
+            // Muestra los datos del usuario en los TextBoxes
+            txtNombre.Text = usuario.Nombre;
+            txtApellido.Text = usuario.Apellido;
+            txtDocumento.Text = usuario.Documento;
+            txtCorreo.Text = usuario.CorreoElectronico;
+        }
+
+        private void Guardar_Click(object sender, RoutedEventArgs e)
+        {
+            // Actualiza los datos del usuario con los valores de los TextBoxes
+            usuario.Nombre = txtNombre.Text;
+            usuario.Apellido = txtApellido.Text;
+            usuario.Documento = txtDocumento.Text;
+            usuario.CorreoElectronico = txtCorreo.Text;
+
+  
+        }
+
+        private void Cancelar_Click(object sender, RoutedEventArgs e)
+        {
+            // Obtiene la ventana que contiene este UserControl
+            Window parentWindow = Window.GetWindow(this);
+
+            // Cierra la ventana padre
+            if (parentWindow != null)
+            {
+                parentWindow.Close();
+            }
         }
     }
 }
