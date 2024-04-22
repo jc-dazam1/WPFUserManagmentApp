@@ -21,6 +21,7 @@ namespace UserManagmentApp
         public MainWindow()
         {
             InitializeComponent();
+            listaUsuariosViewModel = new ListaUsuariosViewModel();
             dbContext = new AppDbContext();
         }
 
@@ -46,6 +47,11 @@ namespace UserManagmentApp
         private void MostrarListaAreas(object sender, RoutedEventArgs e)
         {
             ContenidoPrincipal.Content = new ListaAreasView();
+        }
+
+        private void MostrarAsignarAreaUsuario(object sender, RoutedEventArgs e)
+        {
+            ContenidoPrincipal.Content = new AsignarUsuarioAreaView();
         }
     }
 }

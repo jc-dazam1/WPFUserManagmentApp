@@ -49,6 +49,22 @@ namespace UserManagmentApp.Controllers
             }
         }
 
+        // Método para obtener una lista los usuarios creados
+        public List<Usuario> ObtenerTodosUsuarios() 
+        {
+            try
+            {
+                return dbContext.Usuarios.ToList();
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                Console.WriteLine("Error al obtener todos los usuarios: " + ex.Message);
+                return new List<Usuario>(); // Retorna una lista vacía en caso de error
+            }
+
+        }
+
         // Método para actualizar los datos de un usuario existente
         public void ActualizarUsuario(Usuario usuarioActualizado)
         {

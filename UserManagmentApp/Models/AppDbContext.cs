@@ -9,8 +9,9 @@ namespace UserManagmentApp.Models
     public class AppDbContext : DbContext
     {
         // Propiedades DbSet para las entidades que deseas mapear a tablas en la base de datos
-        public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Area> Areas { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+
 
         // Constructor que recibe opciones de configuración del contexto
 
