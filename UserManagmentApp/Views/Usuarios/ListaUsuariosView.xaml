@@ -8,14 +8,14 @@
     </UserControl.Resources>
 
     <Grid>
-        <ListView ItemsSource="{Binding UltimosUsuarios}"
+        <ListView ItemsSource="{Binding Usuarios}"
                   SelectedItem="{Binding UsuarioSeleccionado}" Margin="20,20,20,40">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}"/>
                     <GridViewColumn Header="Apellido" DisplayMemberBinding="{Binding Apellido}"/>
                     <GridViewColumn Header="Documento" DisplayMemberBinding="{Binding Documento}"/>
-                    <GridViewColumn Header="Correo Electrónico" DisplayMemberBinding="{Binding Correo}"/>
+                    <GridViewColumn Header="Correo Electrónico" DisplayMemberBinding="{Binding CorreoElectronico}"/>
                 </GridView>
             </ListView.View>
         </ListView>

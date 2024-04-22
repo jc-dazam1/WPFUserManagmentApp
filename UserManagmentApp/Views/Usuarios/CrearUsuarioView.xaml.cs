@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using UserManagmentApp.Controllers;
 using UserManagmentApp.Models;
+using UserManagmentApp.ViewModels.Usuarios;
 
 namespace UserManagmentApp.Views.Usuarios
 {
@@ -23,12 +24,17 @@ namespace UserManagmentApp.Views.Usuarios
     /// </summary>
     public partial class CrearUsuarioView : UserControl
     {
+        public event EventHandler UsuarioGuardado;
+
         private UsuarioController UsuarioController;
-        public CrearUsuarioView()
+        private ListaUsuariosViewModel listaUsuariosViewModel;
+        public CrearUsuarioView(ListaUsuariosViewModel listaUsuariosViewModel)
         {
             InitializeComponent();
 
             UsuarioController = new UsuarioController();
+
+            this.listaUsuariosViewModel = listaUsuariosViewModel;
         }
 
         private void Guardar_Click(object sender, RoutedEventArgs e)
@@ -43,6 +49,8 @@ namespace UserManagmentApp.Views.Usuarios
             Usuario nuevoUsuario = new Usuario(nombre, apellido, documento, correo);
             UsuarioController.GuardarUsuario(nuevoUsuario);
 
+            // Notificar que se ha guardado un usuario
+            UsuarioGuardado?.Invoke(this, EventArgs.Empty);
 
         }
 
