@@ -22,14 +22,15 @@
 
         <!-- Botón para editar usuario -->
         <Button Content="Editar Usuario" 
-                Command="{Binding EditarUsuarioCommand}" 
-                CommandParameter="{Binding UsuarioSeleccionado}" 
-                HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
-                IsEnabled="{Binding UsuarioSeleccionado, Converter={StaticResource NullToBoolConverter}}"
-                Width="100"
-                Height="30"
-                Margin="20,80,0,5"/>
+        Command="{Binding EditarUsuarioCommand}" 
+        CommandParameter="{Binding UsuarioSeleccionado}" 
+        HorizontalAlignment="Left"
+        VerticalAlignment="Bottom"
+        IsEnabled="{Binding UsuarioSeleccionado, Converter={StaticResource NullToBoolConverter}}"
+        Width="100"
+        Height="30"
+        Margin="20,80,0,5"/>
+
 
     </Grid>
 </UserControl>

@@ -18,7 +18,6 @@ namespace UserManagmentApp
         public MainWindow()
         {
             InitializeComponent();
-            listaUsuariosViewModel = new ListaUsuariosViewModel();
             // Crea una instancia de AppDbContext utilizando las opciones de configuración
             dbContext = new AppDbContext();
         }

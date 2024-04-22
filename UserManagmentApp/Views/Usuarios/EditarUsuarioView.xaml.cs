@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using UserManagmentApp.Models;
+using UserManagmentApp.Utilities;
 
 namespace UserManagmentApp.Views.Usuarios
 {
@@ -22,9 +12,13 @@ namespace UserManagmentApp.Views.Usuarios
     public partial class EditarUsuarioView : UserControl
     {
         private Usuario usuario;
+        public ICommand GuardarUsuarioCommand { get; private set; }
         public EditarUsuarioView(Usuario usuarioSeleccionado)
         {
             InitializeComponent();
+
+            // Inicializar el comando de editar usuario
+            GuardarUsuarioCommand = new RelayCommand(ActualizarUsuario);
 
             // Guarda el usuario seleccionado para editar
             usuario = usuarioSeleccionado;
@@ -36,7 +30,7 @@ namespace UserManagmentApp.Views.Usuarios
             txtCorreo.Text = usuario.CorreoElectronico;
         }
 
-        private void Guardar_Click(object sender, RoutedEventArgs e)
+        private void ActualizarUsuario(object parameter)
         {
             // Actualiza los datos del usuario con los valores de los TextBoxes
             usuario.Nombre = txtNombre.Text;
@@ -44,8 +38,39 @@ namespace UserManagmentApp.Views.Usuarios
             usuario.Documento = txtDocumento.Text;
             usuario.CorreoElectronico = txtCorreo.Text;
 
-  
+            try
+            {
+                // Guarda los cambios en la BD
+                using (var dbContext = new AppDbContext())
+                {
+                    // Busca el usuario por su ID
+                    var usuarioEnBD = dbContext.Usuarios.Find(usuario.Id);
+                    if (usuarioEnBD != null)
+                    {
+                        // Actualiza los datos del usuario 
+                        usuarioEnBD.Nombre = usuario.Nombre;
+                        usuarioEnBD.Apellido = usuario.Apellido;
+                        usuarioEnBD.Documento = usuario.Documento;
+                        usuarioEnBD.CorreoElectronico = usuario.CorreoElectronico;
+
+                        dbContext.SaveChanges();
+                        MainWindow? mainWindow = Application.Current.MainWindow as MainWindow;
+
+                        ListaUsuariosView listaUsuariosView = new ListaUsuariosView();
+                        mainWindow.ContenidoPrincipal.Content = listaUsuariosView;
+                    }
+                    else
+                    {
+                        MessageBox.Show("El usuario no fue encontrado en la base de datos.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el usuario en la base de datos: " + ex.Message);
+            }
         }
+
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)
         {
