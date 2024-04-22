@@ -13,7 +13,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <!-- Agrega más RowDefinitions según sea necesario -->
         </Grid.RowDefinitions>
 
         <!-- Nombre -->
@@ -30,9 +29,6 @@
         <!-- Correo electrónico -->
         <TextBlock Grid.Row="4" Text="Correo electrónico:"/>
         <TextBox Grid.Row="5" x:Name="txtCorreo"/>
-
-        <!-- Otros campos -->
-        <!-- Agrega más campos de acuerdo a tus necesidades -->
 
         <!-- Botones -->
         <StackPanel Grid.Row="6" Orientation="Horizontal">

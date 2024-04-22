@@ -8,11 +8,9 @@
             <MenuItem Header="Usuarios">
                 <MenuItem Header="Crear Usuario" Click="MostrarCrearUsuario"/>
                 <MenuItem Header="Lista de Usuarios" Click="MostrarListaUsuarios"/>
+               
             </MenuItem>
-            <!-- Agrega más elementos de menú según tus necesidades -->
         </Menu>
-
-        <!-- Aquí se mostrarían las vistas específicas según la navegación del usuario -->
         <ContentControl Name="ContenidoPrincipal"/>
     </Grid>
 </Window>
