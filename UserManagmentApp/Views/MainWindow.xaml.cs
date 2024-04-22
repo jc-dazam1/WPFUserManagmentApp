@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Windows;
 using UserManagmentApp.Models;
+using UserManagmentApp.Utilities;
 using UserManagmentApp.ViewModels.Usuarios;
 using UserManagmentApp.Views.Areas;
 using UserManagmentApp.Views.Usuarios;
@@ -20,7 +21,6 @@ namespace UserManagmentApp
         public MainWindow()
         {
             InitializeComponent();
-            // Crea una instancia de AppDbContext utilizando las opciones de configuración
             dbContext = new AppDbContext();
         }
 

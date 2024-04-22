@@ -12,8 +12,8 @@ using UserManagmentApp.Models;
 namespace UserManagmentApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240422082743_Inicial")]
-    partial class Inicial
+    [Migration("20240422191940_inicial")]
+    partial class inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,40 @@ namespace UserManagmentApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("UserManagmentApp.Models.Area", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Area", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Nombre = "Nómina"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Nombre = "Facturación"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Nombre = "Servicio al Cliente"
+                        });
+                });
 
             modelBuilder.Entity("UserManagmentApp.Models.Usuario", b =>
                 {
