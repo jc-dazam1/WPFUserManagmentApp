@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Windows;
 using UserManagmentApp.Models;
+using UserManagmentApp.ViewModels.Usuarios;
 using UserManagmentApp.Views.Usuarios;
 
 namespace UserManagmentApp
@@ -12,22 +13,27 @@ namespace UserManagmentApp
     {
         private AppDbContext dbContext; // Contexto de la base de datos
 
+        private ListaUsuariosViewModel listaUsuariosViewModel;
+
         public MainWindow()
         {
             InitializeComponent();
-
+            listaUsuariosViewModel = new ListaUsuariosViewModel();
             // Crea una instancia de AppDbContext utilizando las opciones de configuración
             dbContext = new AppDbContext();
-
-            // Muestra la vista al iniciar la aplicación
-            MostrarListaUsuarios(null, null);
         }
 
 
         private void MostrarCrearUsuario(object sender, RoutedEventArgs e)
         {
-            // Muestra la vista de creación de usuario en el ContentControl
-            ContenidoPrincipal.Content = new CrearUsuarioView();
+            var crearUsuarioView = new CrearUsuarioView(listaUsuariosViewModel);
+            crearUsuarioView.UsuarioGuardado += CrearUsuarioView_UsuarioGuardado;
+            ContenidoPrincipal.Content = crearUsuarioView;
+        }
+
+        private void CrearUsuarioView_UsuarioGuardado(object sender, EventArgs e)
+        {
+            listaUsuariosViewModel.CargarUsuarios(); // Cargar la lista de usuarios después de guardar uno nuevo
         }
 
         private void MostrarListaUsuarios(object sender, RoutedEventArgs e)

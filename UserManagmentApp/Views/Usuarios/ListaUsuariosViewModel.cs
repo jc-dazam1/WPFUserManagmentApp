@@ -36,11 +36,24 @@ namespace UserManagmentApp.ViewModels.Usuarios
 
         public ListaUsuariosViewModel()
         {
-            // Lógica para cargar los usuarios
-            Usuarios = new ObservableCollection<Usuario>();
-
             // Inicializar el comando de editar usuario
             EditarUsuarioCommand = new RelayCommand(EditarUsuario);
+
+            // Cargar los usuarios al iniciar el ViewModel
+            CargarUsuarios();
+        }
+
+        public void CargarUsuarios()
+        {
+            // Acceder a la base de datos y obtener la lista de usuarios
+            using (var dbContext = new AppDbContext())
+            {
+                // Obtener los últimos 10 usuarios
+                var ultimosUsuarios = dbContext.Usuarios.OrderByDescending(u => u.FechaCreacion).Take(10).ToList();
+
+                // Actualizar la propiedad Usuarios con los últimos usuarios obtenidos
+                Usuarios = new ObservableCollection<Usuario>(ultimosUsuarios);
+            }
         }
 
         private void EditarUsuario(object parameter)

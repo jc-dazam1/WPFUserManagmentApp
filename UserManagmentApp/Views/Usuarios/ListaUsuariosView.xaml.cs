@@ -22,9 +22,11 @@ namespace UserManagmentApp.Views.Usuarios
     /// </summary>
     public partial class ListaUsuariosView : UserControl
     {
+        private ListaUsuariosViewModel listaUsuariosViewModel;
         public ListaUsuariosView()
         {
             InitializeComponent();
+            listaUsuariosViewModel = new ListaUsuariosViewModel();
             DataContext = new ListaUsuariosViewModel();
         }
 
