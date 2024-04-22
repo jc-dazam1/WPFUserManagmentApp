@@ -2,6 +2,7 @@
 using System.Windows;
 using UserManagmentApp.Models;
 using UserManagmentApp.ViewModels.Usuarios;
+using UserManagmentApp.Views.Areas;
 using UserManagmentApp.Views.Usuarios;
 
 namespace UserManagmentApp
@@ -14,6 +15,7 @@ namespace UserManagmentApp
         private AppDbContext dbContext; // Contexto de la base de datos
 
         private ListaUsuariosViewModel listaUsuariosViewModel;
+
 
         public MainWindow()
         {
@@ -39,6 +41,11 @@ namespace UserManagmentApp
         {
             // Muestra la vista de lista de usuarios en el ContentControl
             ContenidoPrincipal.Content = new ListaUsuariosView();
+        }
+
+        private void MostrarListaAreas(object sender, RoutedEventArgs e)
+        {
+            ContenidoPrincipal.Content = new ListaAreasView();
         }
     }
 }

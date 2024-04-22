@@ -11,16 +11,22 @@ namespace UserManagmentApp.Models
     [Table("Area")]
     public class Area
     {
+        //áreas predefinidas
+        public static List<Area> AreasPredefinidas { get; private set; }
         // Clave primaria autoincremental
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
         public string Nombre { get; set; }
 
-        public Area(long id, string nombre)
+        static Area()
         {
-            Id = id;
-            Nombre = nombre;
+            AreasPredefinidas = new List<Area>
+            {
+                new() { Id = 1, Nombre = "Nómina" },
+                new() { Id = 2, Nombre = "Facturación" },
+                new() { Id = 3, Nombre = "Servicio al Cliente" }
+            };
 
         }
     }

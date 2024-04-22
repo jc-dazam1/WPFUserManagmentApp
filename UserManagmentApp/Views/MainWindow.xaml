@@ -9,7 +9,9 @@
             <MenuItem Header="Usuarios">
                 <MenuItem Header="Crear Usuario" Click="MostrarCrearUsuario"/>
                 <MenuItem Header="Lista de Usuarios" Click="MostrarListaUsuarios"/>
-               
+            </MenuItem>
+            <MenuItem Header="Areas">
+                <MenuItem Header="Lista de Areas" Click="MostrarListaAreas"/>
             </MenuItem>
         </Menu>
         <ContentControl Name="ContenidoPrincipal"/>

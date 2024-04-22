@@ -36,6 +36,8 @@ namespace UserManagmentApp.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Area>().ToTable("Areas");
+            modelBuilder.Entity<Area>().HasData(Area.AreasPredefinidas);
         }
     }
 }
