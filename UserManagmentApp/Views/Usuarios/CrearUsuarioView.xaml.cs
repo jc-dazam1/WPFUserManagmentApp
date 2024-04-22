@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UserManagmentApp.Controllers;
 using UserManagmentApp.Models;
 
 namespace UserManagmentApp.Views.Usuarios
@@ -21,9 +23,12 @@ namespace UserManagmentApp.Views.Usuarios
     /// </summary>
     public partial class CrearUsuarioView : UserControl
     {
+        private UsuarioController UsuarioController;
         public CrearUsuarioView()
         {
             InitializeComponent();
+
+            UsuarioController = new UsuarioController();
         }
 
         private void Guardar_Click(object sender, RoutedEventArgs e)
@@ -36,6 +41,9 @@ namespace UserManagmentApp.Views.Usuarios
 
             // Crea un nuevo objeto Usuario con los datos capturados
             Usuario nuevoUsuario = new Usuario(nombre, apellido, documento, correo);
+            UsuarioController.GuardarUsuario(nuevoUsuario);
+
+
         }
 
         private void Cancelar_Click(object sender, RoutedEventArgs e)

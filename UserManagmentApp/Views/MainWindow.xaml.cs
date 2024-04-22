@@ -1,13 +1,6 @@
-﻿using System.Text;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using UserManagmentApp.Models;
 using UserManagmentApp.Views.Usuarios;
 
 namespace UserManagmentApp
@@ -17,12 +10,19 @@ namespace UserManagmentApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private AppDbContext dbContext; // Contexto de la base de datos
+
         public MainWindow()
         {
             InitializeComponent();
-            // Muestra la vista por defecto al iniciar la aplicación
+
+            // Crea una instancia de AppDbContext utilizando las opciones de configuración
+            dbContext = new AppDbContext();
+
+            // Muestra la vista al iniciar la aplicación
             MostrarListaUsuarios(null, null);
         }
+
 
         private void MostrarCrearUsuario(object sender, RoutedEventArgs e)
         {
