@@ -33,6 +33,21 @@ namespace UserManagmentApp.Controllers
             }
         }
 
+        public IQueryable<Usuario> ObtenerUsuariosPorArea(long areaId)
+        {
+            try
+            {
+                // Buscar los usuarios que pertenecen al área especificada
+                var usuariosPorArea = dbContext.Usuarios.Where(u => u.AreaId == areaId);
+                return usuariosPorArea;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener los usuarios por área: " + ex.Message);
+                return null;
+            }
+        }
+
         // Método para obtener una lista de los últimos 10 usuarios creados
         public List<Usuario> ObtenerUltimosUsuarios()
         {
@@ -80,7 +95,10 @@ namespace UserManagmentApp.Controllers
                     usuarioExistente.Apellido = usuarioActualizado.Apellido;
                     usuarioExistente.Documento = usuarioActualizado.Documento;
                     usuarioExistente.CorreoElectronico = usuarioActualizado.CorreoElectronico;
-
+                    if (usuarioActualizado.AreaId != -1)
+                    {
+                        usuarioExistente.AreaId = usuarioActualizado.AreaId;
+                    }
                     dbContext.SaveChanges(); // Guarda los cambios en la base de datos
                 }
                 else

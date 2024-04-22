@@ -29,5 +29,7 @@
             <Button Content="Guardar" Width="100" Margin="5" Click="Guardar_Click"/>
             <Button Content="Cancelar" Width="100" Margin="5" Click="Cancelar_Click"/>
         </StackPanel>
+        <!-- Mensaje de confirmación -->
+        <TextBlock Grid.Row="5" x:Name="confirmationTextBlock"/>
     </Grid>
 </UserControl>
