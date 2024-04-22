@@ -33,8 +33,7 @@ namespace UserManagmentApp.Views.Areas
             // Realizar la asignación de usuario a área (puedes implementar la lógica de acuerdo a tus necesidades)
             if (selectedUser != null && selectedArea != null)
             {
-                // Aquí podrías guardar la asignación en la base de datos, por ejemplo
-                // selectedUser.AreaId = selectedArea.Id;
+                selectedUser.AreaId = selectedArea.Id;
 
                 // Actualizar la interfaz de usuario para mostrar un mensaje de confirmación
                 confirmationTextBlock.Text = "Asignación exitosa: " + selectedUser.Nombre + " asignado a " + selectedArea.Nombre;
