@@ -27,8 +27,7 @@ namespace UserManagmentApp.Views.Usuarios
         {
             InitializeComponent();
             listaUsuariosViewModel = new ListaUsuariosViewModel();
-            DataContext = new ListaUsuariosViewModel();
+            DataContext = listaUsuariosViewModel;
         }
-
     }
 }
