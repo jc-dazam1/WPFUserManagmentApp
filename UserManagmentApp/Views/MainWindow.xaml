@@ -1,7 +1,7 @@
 ﻿<Window x:Class="UserManagmentApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Aplicacion" Height="300" Width="400">
+        Title="Aplicacion" Height="400" Width="400">
     <Grid>
         <!-- Menú de la aplicación -->
         <Menu>

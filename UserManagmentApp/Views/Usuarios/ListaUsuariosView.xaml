@@ -1,12 +1,35 @@
 ﻿<UserControl x:Class="UserManagmentApp.Views.Usuarios.ListaUsuariosView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:UserManagmentApp.Views.Usuarios"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:UserManagmentApp.Converters">
+    <UserControl.Resources>
+        <converters:NullToBoolConverter x:Key="NullToBoolConverter" />
+    </UserControl.Resources>
+
     <Grid>
-            
+        <ListView ItemsSource="{Binding UltimosUsuarios}"
+                  SelectedItem="{Binding UsuarioSeleccionado}" Margin="20,20,20,40">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}"/>
+                    <GridViewColumn Header="Apellido" DisplayMemberBinding="{Binding Apellido}"/>
+                    <GridViewColumn Header="Documento" DisplayMemberBinding="{Binding Documento}"/>
+                    <GridViewColumn Header="Correo Electrónico" DisplayMemberBinding="{Binding Correo}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Botón para editar usuario -->
+        <Button Content="Editar Usuario" 
+                Command="{Binding EditarUsuarioCommand}" 
+                CommandParameter="{Binding UsuarioSeleccionado}" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                IsEnabled="{Binding UsuarioSeleccionado, Converter={StaticResource NullToBoolConverter}}"
+                Width="100"
+                Height="30"
+                Margin="20,80,0,5"/>
+
     </Grid>
 </UserControl>

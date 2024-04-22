@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UserManagmentApp.Models;
+using UserManagmentApp.ViewModels.Usuarios;
 
 namespace UserManagmentApp.Views.Usuarios
 {
@@ -23,6 +25,8 @@ namespace UserManagmentApp.Views.Usuarios
         public ListaUsuariosView()
         {
             InitializeComponent();
+            DataContext = new ListaUsuariosViewModel();
         }
+
     }
 }
